@@ -17,11 +17,15 @@ Completed tasks
 Pending tasks
 ⏰ Next due task notification
 💾 Persistent storage using JSON
+
+
 🛠️ Technologies Used
 Backend: Python, Flask
 Frontend: HTML5, CSS3
 Data Storage: JSON
 Template Engine: Jinja2
+
+
 📂 Project Structure
 to-do-list/
 │
@@ -33,28 +37,30 @@ to-do-list/
 │
 └── static/
     └── style.css
+
+    
 ⚙️ Installation and Setup
 1. Clone the Repository
 git clone <repository-url>
-
 Or download the ZIP file and extract it.
 
 2. Navigate to the Project Folder
 cd to-do-list
+
 3. Install Dependencies
 pip install flask
+
 4. Create tasks.json
-
 Create a file named tasks.json in the project root directory and add:
-
 []
+
 5. Run the Application
 python app.py
+
 6. Open the Browser
-
 Visit:
-
 http://127.0.0.1:5000
+
 📸 Application Workflow
 Enter a task name.
 Select a deadline.
@@ -64,8 +70,8 @@ Update task details if needed.
 Mark tasks as completed.
 Delete tasks that are no longer needed.
 Monitor upcoming deadlines using the Next Due Task section.
-🧠 How It Works
 
+🧠 How It Works
 User actions from the frontend are sent to Flask routes.
 
 Flask processes the request and updates the task data.
