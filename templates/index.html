@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>✨ My To-Do List</h1>
+
+    <div class="summary">
+
+        <div class="card">
+            <h3>{{ total }}</h3>
+            <p>Total Tasks</p>
+        </div>
+
+        <div class="card">
+            <h3>{{ completed }}</h3>
+            <p>Completed</p>
+        </div>
+
+        <div class="card">
+            <h3>{{ pending }}</h3>
+            <p>Pending</p>
+        </div>
+
+    </div>
+
+    <form action="/add" method="POST" class="add-form">
+
+        <input
+            type="text"
+            name="task"
+            placeholder="Enter task"
+            required>
+
+        <input
+            type="datetime-local"
+            name="deadline"
+            required>
+
+        <button type="submit">
+            Add Task
+        </button>
+
+    </form>
+
+    <h2>📋 All Tasks</h2>
+
+    {% if tasks %}
+
+        {% for task in tasks %}
+
+        <div class="task-card">
+
+            <form action="/update/{{ loop.index0 }}"
+                  method="POST"
+                  class="update-form">
+
+                <input
+                    type="text"
+                    name="updated_task"
+                    value="{{ task.name }}"
+                    class="{% if task.completed %}completed{% endif %}">
+
+                <input
+                    type="datetime-local"
+                    name="updated_deadline"
+                    value="{{ task.deadline }}">
+
+                <button type="submit">
+                    Update
+                </button>
+
+            </form>
+
+            <p class="deadline">
+                📅 Deadline:
+                {% if task.deadline %}
+                    {{ task.deadline.replace('T', ' ') }}
+                {% else %}
+                    No deadline
+                {% endif %}
+            </p>
+
+            <div class="actions">
+
+                {% if not task.completed %}
+
+                <a href="/complete/{{ loop.index0 }}"
+                   class="complete-btn">
+                    ✓ Done
+                </a>
+
+                {% endif %}
+
+                <a href="/delete/{{ loop.index0 }}"
+                   class="delete-btn">
+                    🗑 Delete
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p class="empty">
+            No tasks available.
+        </p>
+
+    {% endif %}
+
+    <div class="notification">
+
+        {% if next_due %}
+
+            <h3>⏰ Next Due Task</h3>
+
+            <p><strong>{{ next_due.name }}</strong></p>
+
+            <p>
+                Due on:
+                {{ next_due.deadline.replace('T', ' ') }}
+            </p>
+
+        {% else %}
+
+            <h3>🎉 All tasks completed!</h3>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
