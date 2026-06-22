@@ -10,7 +10,8 @@ This application helps users manage daily tasks efficiently by allowing them to:
 - and delete tasks.
 
 
-🚀 Features
+*🚀 Features*
+
 ➕ Add new tasks
 📅 Set deadlines for tasks
 ✏️ Update task details and deadlines
@@ -25,7 +26,7 @@ Pending tasks
 💾 Persistent storage using JSON
 
 
-🛠️ Technologies Used
+*🛠️ Technologies Used*
 Backend: Python, Flask
 Frontend: HTML5, CSS3
 Data Storage: JSON
@@ -60,7 +61,6 @@ to-do-list/
 
 - **Backend:** Python, Flask  
 - **Frontend:** HTML5, CSS3  
-- **Template Engine:** Jinja2  
 - **Data Storage:** JSON  
 
 ---
@@ -228,10 +228,8 @@ Through this project, you can learn:
 **Sowmya M**  
 Machine Learning Enthusiast | Python Learner | Aspiring AI Engineer
 
----
 
 
-This project is created for educational purposes and is free to use and modify.
 
 ## 📜 License
 
